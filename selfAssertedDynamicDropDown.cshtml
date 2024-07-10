@@ -58,24 +58,26 @@
             var select = document.createElement( 'select' ),
                 optionElem;
 
-            options.forEach(function( item ) {
+            options.split(",").forEach(function( item ) {
 
                 optionElem = document.createElement( 'option' );
-                optionElem.textContent = item.value
-                optionElem.value =item.value.split(' - ')[0];
+
+                optionElem.value =
+                    optionElem.textContent =
+                        item;
 
                 select.appendChild( optionElem );
             });
-            select.setAttribute("id", "costumerselect");
+            select.setAttribute("id", "emailselect");
             return select;
         }
-        var options = $("#TempExCalims")
-        $("label[for='TempExCalimsString']").after(makeSelect(options))
+        var options = $("#TempExCalimsString")[0].value
+        $("label[for='selectedemail']").after(makeSelect(options))
 
-        $("#TempExCalimsString")[0].value = $("#costumerselect option:selected")[0].value
+        $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
 
-        $("#costumerselect").change(function() {
-        $("#TempExCalimsString")[0].value = $("#costumerselect option:selected")[0].value
+        $("#emailselect").change(function() {
+        $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
         });
 		});
     </script>
