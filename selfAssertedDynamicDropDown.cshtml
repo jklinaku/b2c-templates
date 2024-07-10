@@ -35,18 +35,7 @@
                             <div class="api_container normaltext">
                                 <img alt="Company Logo" class="companyLogo" style="display: none;" data-tenant-branding-logo="true" />
                                 <div id="api"></div>
-                            </div>
-                            <div id="dropdown-container">
- <script>
-console.log("Defer Action");
-</script>
-</div>
-<div id="demo">
- <script>
-console.log("Defer Action");
-document.getElementById("demo").innerHTML = "Jabberwocky!";
-</script>
-</div>
+
                         </div>
                     </td>
                 </tr>
@@ -57,29 +46,32 @@ document.getElementById("demo").innerHTML = "Jabberwocky!";
 </body>
 <script>"use strict";$(document).ready(function () { if (navigator.userAgent.match(/IEMobile\/10\.0/)) { var t = document.createElement("style"); t.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}")), t.appendChild(document.createTextNode("@-ms-viewport{height:auto!important}")), document.getElementsByTagName("head")[0].appendChild(t) } if (navigator.userAgent.match(/MSIE 10/i)) { var e = $("#footer_links_container"); $(e).css("padding-top", "100px") } var o, i = $("#background_background_image"), n = function () { document.body.style.overflow = "hidden", ($(window).width() - 500) / $(window).height() < o ? (i.height($(window).height()), i.width("auto")) : (i.width($(window).width() - 500), i.height("auto")), document.body.style.overflow = "" }; $("<img>").attr("src", i.attr("src")).on("load", function () { o = this.width / this.height, n() }), $(window).resize(function () { n() }), "undefined" != typeof $("#MicrosoftAccountExchange") && $("#MicrosoftAccountExchange").text("Microsoft"), $("*").removeAttr("placeholder") });</script>
     <script>
-        $(document).ready(function() {
-            var newInput = $('<input type="text" value="test" />');
-            
+	$(document).ready(function () {
+        function makeSelect( options) {
+            var select = document.createElement( 'select' ),
+                optionElem;
 
-            $("#dropdown-container").append(newInput);
-            // Get the comma-separated string
-            var commaSeparatedString = $("#TempExCalimsString").val();
+            options.split(",").forEach(function( item ) {
 
-            // Split the string into an array
-            var itemsArray = commaSeparatedString.split(',');
+                optionElem = document.createElement( 'option' );
 
-            // Create a select element
-            var selectElement = $("<select></select>").attr("id", "myDropdown");
+                optionElem.value =
+                    optionElem.textContent =
+                        item;
 
-            // Loop through the array and create option elements
-            itemsArray.forEach(function(item) {
-                var optionElement = $("<option></option>").text(item).val(item);
-                selectElement.append(optionElement);
+                select.appendChild( optionElem );
             });
+            select.setAttribute("id", "emailselect");
+            return select;
+        }
+        var options = $("#TempExCalimsString")[0].value
+        $("label[for='selectedemail']").after(makeSelect(options))
 
+        $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
 
-            // Append the select element to the container
-            $("#dropdown-container").append(selectElement);
+        $("#emailselect").change(function() {
+        $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
         });
+		});
     </script>
 </html>
