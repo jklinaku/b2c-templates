@@ -71,7 +71,8 @@
             select.setAttribute("id", "emailselect");
             return select;
         }
-        var options = $("#emailsdelim")[0].value
+        var options = $("#TempExCalimsString")[0].value
+$("#TempExCalimsString")[0].value = "test123"
         $("label[for='selectedemail']").after(makeSelect(options))
 
         $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
