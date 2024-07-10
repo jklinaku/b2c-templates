@@ -72,9 +72,12 @@
             return select;
         }
         var options = $("#TempExCalimsString")[0].value
+	console.log("ckemi");
         $("label[for='selectedemail']").after(makeSelect(options))
-
+	console.log(options);
         $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
+
+	
 
         $("#emailselect").change(function() {
         $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
