@@ -65,11 +65,11 @@
             var select = document.createElement( 'select' ),
                 optionElem;
 
-            options.forEach(function( item ) {
+            options.split(",").forEach(function( item ) {
 
                 optionElem = document.createElement( 'option' );
 
-                optionElem.value = item.split(' - ')[0] ;
+                optionElem.value =
                     optionElem.textContent =
                         item;
 
@@ -78,7 +78,7 @@
             select.setAttribute("id", "emailselect");
             return select;
         }
-        var options = $("#TempExCalims")[0].value
+        var options = $("#TempExCalimsString")[0].value
         $("label[for='selectedemail']").after(makeSelect(options))
 
         $("#selectedemail")[0].value = $("#emailselect option:selected")[0].value
